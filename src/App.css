@@ -5,6 +5,15 @@
   --foam : #E8F9FD;
   --emerald : #59CE8F;
   --black : #000000;
+  --ebony : #0E1720;
+  --ebony1 :rgb(25, 30, 36)0;
+  --bunting : #162A4C;
+  --web-orange : #FFA800;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 .App {
@@ -23,8 +32,7 @@
 }
 
 .App-header {
-  /* background-color: #282c34; */
-  background-color: var(--foam);
+  background-color: var(--ebony);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -45,4 +53,36 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card-container {
+  width: 400px;
+  height: 600px;
+  background: var(--bunting);
+  border-radius: 10px;
+  padding: 20px 10px;
+  position: relative;
+}
+
+.card-container-btn {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  width: 85%;
+  height: 50px;
+  background-color: var(--web-orange);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.no-account-container {
+  font-size: 20px;
+}
+.no-account-icon {
+  font-size: 40px;
 }
