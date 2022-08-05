@@ -1,3 +1,12 @@
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+  --red : #FF1E00;
+  --foam : #E8F9FD;
+  --emerald : #59CE8F;
+  --black : #000000;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +23,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: var(--foam);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
