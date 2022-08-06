@@ -9,6 +9,11 @@
   --ebony1 :rgb(25, 30, 36)0;
   --bunting : #162A4C;
   --web-orange : #FFA800;
+  --aqua-spring : #F8FBFD;
+  --gallery : #EEEEEE;
+  --font-color : #292f33;
+  --lochmara : #0289D0;
+  --btn-color : #0289D0;
 }
 
 * {
@@ -18,6 +23,7 @@
 
 .App {
   text-align: center;
+  color: var(--font-color);
 }
 
 .App-logo {
@@ -32,14 +38,13 @@
 }
 
 .App-header {
-  background-color: var(--ebony);
+  background-color: var(--aqua-spring);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -58,10 +63,11 @@
 .card-container {
   width: 400px;
   height: 600px;
-  background: var(--bunting);
+  background: white;
   border-radius: 10px;
   padding: 20px 10px;
   position: relative;
+  border: 2px solid var(--gallery);
 }
 
 .card-container-btn {
@@ -71,13 +77,14 @@
   transform: translate(-50% , -50%);
   width: 85%;
   height: 50px;
-  background-color: var(--web-orange);
-  border-radius: 4px;
+  background-color: var(--btn-color);
+  border-radius: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  text-transform: uppercase;
+  color: white;
+  font-size: 20px;
 }
 
 .no-account-container {
