@@ -1,23 +1,12 @@
 import '../App.css';
-import { MdOutlineNoAccounts } from 'react-icons/md';
 
-const Card = ({ btnLabel, child }) => {
 
-    const noAccount = (
-        <div className='no-account-container'>
-            <MdOutlineNoAccounts className='no-account-icon' />
-            <br />
-            Didn't find any account
-            <br />
-            Would you like to create a new Account ?
-        </div>
-    );
-
+const Card = ({ btnLabel, children, onBtnPressed }) => {
     return (
         <>
             <div className="card-container">
-                {noAccount}
-                <div className='card-container-btn'>
+                {children}
+                <div className='card-container-btn' onClick={() => onBtnPressed()}>
                     {btnLabel}
                 </div>
             </div>
