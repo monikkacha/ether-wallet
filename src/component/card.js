@@ -1,14 +1,18 @@
 import '../App.css';
 
 
-const Card = ({ btnLabel, children, onBtnPressed }) => {
+const Card = ({ btnLabel, children, onBtnPressed, isBtnVisible = true }) => {
     return (
         <>
             <div className="card-container">
                 {children}
-                <div className='card-container-btn' onClick={() => onBtnPressed()}>
-                    {btnLabel}
-                </div>
+                {isBtnVisible ?
+                    (<div className='card-container-btn' onClick={() => onBtnPressed()}>
+                        {btnLabel}
+                    </div>)
+                    : ""
+                }
+
             </div>
         </>
     );

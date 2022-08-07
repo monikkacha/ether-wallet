@@ -65,9 +65,13 @@
   height: 600px;
   background: white;
   border-radius: 10px;
-  padding: 20px 30px;
+  
   position: relative;
   border: 2px solid var(--gallery);
+}
+
+.card-padding-container {
+  padding: 20px 30px;
 }
 
 .card-container-btn {
@@ -120,8 +124,8 @@
 }
 
 .text-field-text {
-  /* color: var(--btn-color);  */
   color: var(--ebony); 
   font-size: 16px;
   font-weight: 500;
 }
+
