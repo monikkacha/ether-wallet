@@ -2,7 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import Card from "../component/card";
 import Identicon from 'identicon.js';
 import { useEffect, useState } from 'react';
-import material from '../assets/material-5.jpg';
+import material from '../assets/material-0.jpg';
+import { MdOutlineContentCopy } from 'react-icons/md';
+import { FiMoreVertical } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 const Home = () => {
 
@@ -18,6 +21,9 @@ const Home = () => {
         createAvatar();
     }, []);
 
+    const copyHandler = () => {
+        toast.success('Public key copied on your clipboard');
+    }
 
     return (
         <Card
@@ -25,11 +31,19 @@ const Home = () => {
             btnLabel={"Create"} onBtnPressed={() => handleBtnClick()}
             isBtnVisible={false}
         >
-            <div className='card-padding-container'>
-                <img src={material} alt='text' className='account-circle-avatar' />
+            <div className='account-info-container'>
+                <div className='account-info-container-sub'>
+                    <img src={material} alt='text' className='account-circle-avatar' />
+                    <div className='size-box-width-12' />
+                    <div className='account-info-text-container'>
+                        <span className='account-info-text-account-label'>Account Number 1</span>
+                        <span className='account-info-text-account-number' onClick={() => copyHandler()}> <span >0xFc2AbE....5Ad</span> <MdOutlineContentCopy className='copy-icon' /></span>
+                    </div>
+                </div>
+                <FiMoreVertical />
             </div>
-            <hr />
-        </Card>);
+            <div className='divider' />
+        </Card >);
 }
 
 export default Home;

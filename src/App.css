@@ -14,6 +14,10 @@
   --font-color : #292f33;
   --lochmara : #0289D0;
   --btn-color : #0289D0;
+  --dove-grey : #6F6F6F;
+  --neon-red : #FF3131;
+  --charcoal : #36454F;
+  
 }
 
 * {
@@ -65,7 +69,6 @@
   height: 600px;
   background: white;
   border-radius: 10px;
-  
   position: relative;
   border: 2px solid var(--gallery);
 }
@@ -80,6 +83,19 @@
   left: 50%;
   transform: translate(-50% , -50%);
   width: 85%;
+  height: 50px;
+  background-color: var(--btn-color);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
+
+.card-custom-container-btn {
+  width: 100%;
   height: 50px;
   background-color: var(--btn-color);
   border-radius: 100px;
@@ -121,10 +137,11 @@
   width: 100%;
   padding-bottom: 10px;
   font-size: 16px;
+  margin-top: -10px;
 }
 
 .text-field-text {
-  color: var(--ebony); 
+  color: var(--charcoal); 
   font-size: 16px;
   font-weight: 500;
 }
@@ -133,4 +150,109 @@
   border-radius: 100px;
   height: 50px;
   width: 50px;
+  border: 4px solid var(--gallery);
+}
+
+.account-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.account-info-container-sub {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.account-info-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.account-info-text-account-label {
+  font-size: 16px;
+}
+
+.account-info-text-account-number {
+  font-size: 14px;
+  color: var(--dove-grey);
+  cursor: pointer;
+}
+
+.account-info-text-account-number:hover {
+  color: var(--blue);
+}
+
+.size-box-width-12 {
+  width: 12px;
+}
+
+.size-box-height-12 {
+  height: 12px;
+}
+
+.size-box-height-16 {
+  height: 16px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider {
+  height: 2px;
+  background-color: var(--gallery);
+}
+
+.logo-name {
+  font-family: 'Ubuntu';
+  font-weight: 500;
+  color: var(--neon-red);
+  font-size: 32px;
+}
+
+.logo-name-sub {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+
+.login-container {
+
+}
+
+.login-heading-text , .heading-text{
+  font-family: 'Ubuntu';
+  font-weight: 500;
+  color: var(--ebony1);
+}
+
+.login-forgot-text {
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-forgot-text:hover {
+  color: var(--blue);
+}
+
+.login-create-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.login-create-text-highlight {
+  color: var(--neon-red);
+  cursor: pointer;
 }
