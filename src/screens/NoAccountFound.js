@@ -6,7 +6,7 @@ const NoAccountFoundJs = () => {
 
     const navigate = useNavigate();
 
-    const handleBtnClick = () => navigate('create', { replace: true });
+    const handleBtnClick = () => navigate('/create', { replace: false });
 
     return (
         <Card child={"Didn't find any account ,create new one "} btnLabel={"Create"} onBtnPressed={() => handleBtnClick()}>

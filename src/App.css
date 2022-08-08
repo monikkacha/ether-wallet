@@ -120,7 +120,7 @@
   border-bottom: 2px solid var(--btn-color);
   width: 100%;
   padding-bottom: 10px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .text-field-text {
@@ -129,3 +129,8 @@
   font-weight: 500;
 }
 
+.account-circle-avatar {
+  border-radius: 100px;
+  height: 50px;
+  width: 50px;
+}

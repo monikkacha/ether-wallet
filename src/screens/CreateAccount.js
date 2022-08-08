@@ -13,21 +13,27 @@ const CreateAccount = () => {
 
     const handleBtnClick = () => {
         if (password === '') {
-            console.log('password is empty');
             toast.error('password is empty');
             return;
         }
         if (confirmPassword === '') {
-            console.log('confirm password is empty');
             toast.error('confirm password is empty');
             return;
         }
+        console.log('return; ', password.length);
+        if (password.length < 6) {
+            toast.error('password should be at least 6 character long');
+            return;
+        }
+        if (confirmPassword.length < 6) {
+            toast.error('confirm password should be at least 6 character long');
+            return;
+        }
         if (password !== confirmPassword) {
-            console.log('password not matching');
             toast.error('password not matching');
             return;
         }
-        // navigate('home', { replace: true });
+        navigate('/home', { replace: true });
     }
 
     return (
@@ -37,9 +43,9 @@ const CreateAccount = () => {
                 <br />
                 <br />
                 <br />
-                <TextFieldPassword defaultValue={password} onValueChange={(value) => setPassword(value)} label={"Password"} />
+                <TextFieldPassword defaultValue={password} onValueChange={(value) => setPassword(value)} label={"Password"} placeholderText="Minimum 6 character" />
                 <br />
-                <TextFieldPassword defaultValue={confirmPassword} onValueChange={(value) => setConfirmPassword(value)} label={"Confirm Password"} />
+                <TextFieldPassword defaultValue={confirmPassword} onValueChange={(value) => setConfirmPassword(value)} label={"Confirm Password"} placeholderText="Minimum 6 character" />
             </div>
         </Card>
     );

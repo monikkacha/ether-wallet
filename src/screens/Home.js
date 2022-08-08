@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Card from "../component/card";
 import Identicon from 'identicon.js';
 import { useEffect, useState } from 'react';
+import material from '../assets/material-5.jpg';
 
 const Home = () => {
 
@@ -24,9 +25,8 @@ const Home = () => {
             btnLabel={"Create"} onBtnPressed={() => handleBtnClick()}
             isBtnVisible={false}
         >
-            <div className='no-account-container card-padding-container'>
-                This is the home Screen
-                <img src={'data:image/png;base64' + userImg} width={100} height={100} alt='text' />
+            <div className='card-padding-container'>
+                <img src={material} alt='text' className='account-circle-avatar' />
             </div>
             <hr />
         </Card>);
