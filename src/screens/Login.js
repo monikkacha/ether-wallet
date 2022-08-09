@@ -5,6 +5,7 @@ import Card from "../component/card";
 import CustomButton from "../component/CustomButton";
 import TextFieldPassword from "../component/TextFieldPassword";
 import { KEY_PASSWORD } from "../utils/constant";
+import { PATH_CREATE } from "../utils/PathConstant";
 
 const Login = () => {
     const [password, setPassword] = useState('');
@@ -14,11 +15,10 @@ const Login = () => {
     const getPassword = () => {
         const passTemp = localStorage.getItem(KEY_PASSWORD);
         setPass(passTemp);
-        console.log('get password , ', passTemp);
     }
 
     const createHandle = () => {
-        navigator('/create');
+        navigator(PATH_CREATE);
     }
 
     const validate = () => {

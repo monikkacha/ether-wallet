@@ -16,8 +16,7 @@
   --btn-color : #0289D0;
   --dove-grey : #6F6F6F;
   --neon-red : #FF3131;
-  --charcoal : #36454F;
-  
+  --charcoal : #36454F;  
 }
 
 * {
@@ -255,4 +254,33 @@
 .login-create-text-highlight {
   color: var(--neon-red);
   cursor: pointer;
+}
+
+.mnemonic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  font-size: 20px;
+}
+
+.mnemonic-container ul {
+  font-size: 16px;
+  text-align: left;
+  color: black;
+}
+
+.mnemonic-text-container {
+  padding: 12px; 
+  text-align: left;
+  font-size: 20px;
+  background: var(--gallery);
+  border-radius: 8px;
+  /* margin-top: 10px; */
+  color: #6f6f6f;
+}
+
+.info-circle {
+  color: var(--blue);
 }
