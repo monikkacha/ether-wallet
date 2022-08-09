@@ -1,16 +1,44 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Card from "../component/card";
 import CustomButton from "../component/CustomButton";
 import TextFieldPassword from "../component/TextFieldPassword";
+import { KEY_PASSWORD } from "../utils/constant";
 
 const Login = () => {
     const [password, setPassword] = useState('');
+    const [pass, setPass] = useState('');
     const navigator = useNavigate();
+
+    const getPassword = () => {
+        const passTemp = localStorage.getItem(KEY_PASSWORD);
+        setPass(passTemp);
+        console.log('get password , ', passTemp);
+    }
 
     const createHandle = () => {
         navigator('/create');
     }
+
+    const validate = () => {
+        if (password === '') {
+            toast.error('password can\'t be empty');
+            return true;
+        }
+        return false;
+    }
+
+    const handleForCheck = () => {
+        if (validate()) return;
+        if (pass === password) {
+            navigator('/home', { replace: false });
+        } else {
+            toast.error('Password is wrong');
+        }
+    }
+
+    useState(() => getPassword(), []);
 
     return (
         <>
@@ -28,12 +56,10 @@ const Login = () => {
                         label="Enter Password"
                         onValueChange={(v) => setPassword(v)}
                     />
-
-
                     <br />
                     <CustomButton
                         btnLabel={'Unlock'}
-                        onBtnPressed={() => console.log('btn got clicked')}
+                        onBtnPressed={() => handleForCheck()}
                     />
                     <br />
                     <div className="login-forgot-text">Forgot password ?</div>

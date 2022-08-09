@@ -5,6 +5,7 @@ import TextFieldPassword from "../component/TextFieldPassword";
 import { toast } from 'react-toastify';
 import TextField from "../component/TextField";
 import PasswordStrengthBar from "react-password-strength-bar";
+import { KEY_PASSWORD, KEY_USERNAME } from "../utils/constant";
 
 const CreateAccount = () => {
 
@@ -45,6 +46,12 @@ const CreateAccount = () => {
             toast.error('password should be either good or strong');
             return;
         }
+        saveCred();
+    }
+
+    const saveCred = () => {
+        localStorage.setItem(KEY_USERNAME, userName);
+        localStorage.setItem(KEY_PASSWORD, password);
         navigate('/home');
     }
 
