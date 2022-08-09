@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import Card from "../component/card";
-import Identicon from 'identicon.js';
 import { useEffect, useState } from 'react';
 import material from '../assets/material-0.jpg';
 import ethereum from '../assets/ethereum.png';
@@ -11,6 +10,7 @@ import { HiDownload } from 'react-icons/hi';
 import { BsArrowUpRight } from 'react-icons/bs';
 import { CgArrowsExchangeAlt } from 'react-icons/cg';
 import CommonHomeButton from '../component/CommonHomeButton';
+import TransactionHistoryCard from '../component/TransactionHistoryCard';
 
 
 const Home = () => {
@@ -72,6 +72,15 @@ const Home = () => {
                 <CommonHomeButton icon={<BsArrowUpRight />} label='Send' onClickBtn={() => { onSendBtnClick() }} />
                 <CommonHomeButton icon={<CgArrowsExchangeAlt />} label='Swap' onClickBtn={() => { onSwapBtnClick() }} />
             </div>
+            <div className='size-box-height-40' />
+            <div className='divider' />
+            <div className='recent-activity'>
+                <span>Recent activity</span>
+                <span className='more-text'>More</span>
+            </div>
+            <div className='size-box-height-12' />
+            <TransactionHistoryCard />
+            <TransactionHistoryCard isSend={true} />
         </Card >);
 }
 
