@@ -15,8 +15,10 @@
   --lochmara : #0289D0;
   --btn-color : #0289D0;
   --dove-grey : #6F6F6F;
+  --silver-chalice : #aaaaaa;
   --neon-red : #FF3131;
   --charcoal : #36454F;  
+  --denim : #176ec6;
 }
 
 * {
@@ -188,18 +190,6 @@
   color: var(--blue);
 }
 
-.size-box-width-12 {
-  width: 12px;
-}
-
-.size-box-height-12 {
-  height: 12px;
-}
-
-.size-box-height-16 {
-  height: 16px;
-}
-
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -283,4 +273,56 @@
 
 .info-circle {
   color: var(--blue);
+}
+
+.home-body-container {
+  display: flex;
+  font-display: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ether-img-container , .home-icon-common-container{
+  border-radius: 100px;
+  border: 1px solid var(--silver-chalice);
+  display: flex;
+  font-display: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+}
+
+.ether-img-container img {
+  height: 24px;
+  width: 24px;
+}
+
+.eth-info-text {
+  font-weight: 500;
+  color: var(--bunting);
+}
+
+.eth-info-price-text {
+  font-size: 16px;
+  color: var(--dove-grey);
+}
+
+.common-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.home-icon-common-container {
+  height: 36px;
+  width: 36px;
+  border: none;
+  color: white;
+  background: var(--denim);
+  cursor: pointer;
+}
+
+.home-icon-label {
+  color: var(--denim);
+  font-size: 14px;
 }
