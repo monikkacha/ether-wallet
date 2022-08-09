@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import TextField from "../component/TextField";
 import PasswordStrengthBar from "react-password-strength-bar";
 import { KEY_PASSWORD, KEY_USERNAME } from "../utils/constant";
+import { PATH_HOME, PATH_MNEMONIC } from "../utils/PathConstant";
 
 const CreateAccount = () => {
 
@@ -52,7 +53,7 @@ const CreateAccount = () => {
     const saveCred = () => {
         localStorage.setItem(KEY_USERNAME, userName);
         localStorage.setItem(KEY_PASSWORD, password);
-        navigate('/home');
+        navigate(PATH_MNEMONIC);
     }
 
     return (
