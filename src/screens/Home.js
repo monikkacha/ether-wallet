@@ -16,6 +16,7 @@ import { KEY_ACCOUNT } from '../utils/constant';
 import { ethers } from 'ethers';
 import { updateAccount, updateProvider, updateHistory } from './../redux/action';
 import { getDecoratedPublicKey } from '../utils/CommonFunction';
+import { PATH_TRANSACTION } from '../utils/PathConstant';
 
 
 const Home = () => {
@@ -31,6 +32,7 @@ const Home = () => {
     const ethMarketValue = 1684;
 
     const copyHandler = () => {
+        navigator.clipboard.writeText(availablePublicKey);
         toast.success('Public key copied on your clipboard');
     }
 
@@ -44,6 +46,10 @@ const Home = () => {
 
     const onSendBtnClick = () => {
         console.log('send eth clicked');
+    }
+
+    const moreBtnHandle = () => {
+        navigate(PATH_TRANSACTION, { replace: false });
     }
 
     useEffect(() => getStoredData(), [])
@@ -117,10 +123,7 @@ const Home = () => {
 
     return (
         <Card
-            child={"Didn't find any account ,create new one "}
-            btnLabel={"Create"} onBtnPressed={() => handleBtnClick()}
-            isBtnVisible={false}
-        >
+            isBtnVisible={false}>
             <div className='account-info-container'>
                 <div className='account-info-container-sub'>
                     <img src={material} alt='text' className='account-circle-avatar' />
@@ -156,7 +159,7 @@ const Home = () => {
             <div className='divider' />
             <div className='recent-activity'>
                 <span>Recent activity</span>
-                <span className='more-text'>More</span>
+                <span className='more-text' onClick={() => moreBtnHandle()}>More</span>
             </div>
             <div className='size-box-height-12' />
             {

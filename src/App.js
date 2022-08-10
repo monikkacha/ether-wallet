@@ -7,7 +7,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './screens/Login';
 import Mnemonic from './screens/Mnemonic';
-import { PATH_CREATE, PATH_HOME, PATH_MNEMONIC } from './utils/PathConstant';
+import { PATH_CREATE, PATH_HOME, PATH_MNEMONIC, PATH_TRANSACTION } from './utils/PathConstant';
+import TransactionScreen from './screens/TransactionScreen';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path={PATH_CREATE} element={<CreateAccount />} />
           <Route path={PATH_HOME} element={<Home />} />
           <Route path={PATH_MNEMONIC} element={<Mnemonic />} />
+          <Route path={PATH_TRANSACTION} element={<TransactionScreen />} />
         </Routes>
       </header >
     </div >
