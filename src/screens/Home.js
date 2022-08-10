@@ -14,7 +14,8 @@ import TransactionHistoryCard from '../component/TransactionHistoryCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { KEY_ACCOUNT } from '../utils/constant';
 import { ethers } from 'ethers';
-import { updateAccount, updateProvider } from './../redux/action';
+import { updateAccount, updateProvider, updateHistory } from './../redux/action';
+import { getDecoratedPublicKey } from '../utils/CommonFunction';
 
 
 const Home = () => {
@@ -25,14 +26,13 @@ const Home = () => {
     const [availableEth, setAvailableEth] = useState('0.0000');
     const [availableEthUSD, setAvailableEthUSD] = useState('0.00');
     const [availablePublicKey, setAvailablePublicKey] = useState('0x0000000000000000000000000000000000000000');
+    const [transactionHistory, setTransactionHistory] = useState([]);
     let currentAccounts;
     const ethMarketValue = 1684;
 
     const copyHandler = () => {
         toast.success('Public key copied on your clipboard');
     }
-
-    const counter = useSelector(state => state);
 
     const onBuyBtnClick = () => {
         window.open('https://www.coinbase.com/', '_blank');
@@ -66,21 +66,37 @@ const Home = () => {
         innerFunction();
     }
 
-    const getDecoratedPublicKey = (str) => str.substr(0, 8) + '.....' + str.substr(39, str.length);
-
     const loadCurrentAccount = async () => {
         setAvailablePublicKey(currentAccounts.account[0].publicKey);
-        const provider = new ethers.providers.JsonRpcProvider(`https://eth-rinkeby.alchemyapi.io/v2/CYvjZCkEfuUAvkhVxi879iYDaiWeUoyC`);
+
+        const provider = new ethers.providers.JsonRpcProvider(`https://eth-rinkeby.alchemyapi.io/v2/${process.env.REACT_APP_ALCHEMY_KEY}`);
         const balance = await provider.getBalance(currentAccounts.account[0].publicKey);
         setAvailableEth(ethers.utils.formatEther(balance));
         setAvailableEthUSD(setMarketValue(ethers.utils.formatEther(balance)))
+
         dispatch(updateProvider(provider));
 
+        loadAccountHistory();
+    }
+
+    const loadAccountHistory = async () => {
         const etherScanProvider = new ethers.providers.EtherscanProvider("rinkeby", "N3VNFG3SI5ES3B3151M1J67753TXG1N38M");
-        console.log('etherScanProvider', etherScanProvider);
-        // etherScanProvider.getHistory(currentAccounts.account[0].publicKey)
         const history = await etherScanProvider.getHistory(currentAccounts.account[0].publicKey);
         console.log('history', history);
+
+        if (history.length > 0) {
+            dispatch(updateHistory(history));
+            let tempArray = [];
+            let j = 0;
+            for (let i = (history.length - 1); i >= 0; i--) {
+                tempArray[j] = history[i];
+                if (j == 1) {
+                    break;
+                }
+                j++;
+            }
+            setTransactionHistory(tempArray);
+        }
     }
 
     const setMarketValue = (eth) => {
@@ -143,8 +159,10 @@ const Home = () => {
                 <span className='more-text'>More</span>
             </div>
             <div className='size-box-height-12' />
-            <TransactionHistoryCard />
-            <TransactionHistoryCard isSend={true} />
+            {
+                transactionHistory.map((item, index) => (<TransactionHistoryCard transaction={item} key={index} />))
+            }
+
         </Card >);
 }
 
