@@ -72,7 +72,7 @@
   border-radius: 10px;
   position: relative;
   border: 2px solid var(--gallery);
-  /* overflow: auto; */
+  overflow: auto;
 }
 
 .card-padding-container {
@@ -386,10 +386,35 @@
   color: green; 
 }
 
+.field-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.field-container input { 
+  border: 1px solid var(--silver-chalice);
+  border-radius: 4px;
+  background: var(--gallery);
+  height: 40px;
+  padding: 8px 10px;
+  color: var(--ebony1);
+}
+
+.field-container span {
+  font-size: 16px;
+  color: var(--denim);
+  font-weight: 500;
+}
 
 
+.history-card-container {
+  overflow-y: scroll;
+}
 
-/* scroll bar */
+
 /* width */
 ::-webkit-scrollbar {
   width: 4px;
@@ -402,10 +427,10 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #cecece; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #ababab; 
 }
