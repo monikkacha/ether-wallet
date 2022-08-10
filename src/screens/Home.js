@@ -14,7 +14,7 @@ import TransactionHistoryCard from '../component/TransactionHistoryCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { KEY_ACCOUNT } from '../utils/constant';
 import { ethers } from 'ethers';
-import { updateAccount } from './../redux/action';
+import { updateAccount, updateProvider } from './../redux/action';
 
 
 const Home = () => {
@@ -22,10 +22,11 @@ const Home = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleBtnClick = () => navigate('create', { replace: true });
-    const [availableEth, setAvailableEth] = useState('0.00');
+    const [availableEth, setAvailableEth] = useState('0.0000');
     const [availableEthUSD, setAvailableEthUSD] = useState('0.00');
     const [availablePublicKey, setAvailablePublicKey] = useState('0x0000000000000000000000000000000000000000');
     let currentAccounts;
+    const ethMarketValue = 1684;
 
     const copyHandler = () => {
         toast.success('Public key copied on your clipboard');
@@ -65,13 +66,27 @@ const Home = () => {
         innerFunction();
     }
 
-    // '0x5fACea5e50A687FefC90Efd3F639E5755597B929'
-
     const getDecoratedPublicKey = (str) => str.substr(0, 8) + '.....' + str.substr(39, str.length);
 
-    const loadCurrentAccount = () => {
-        console.log('currentAccounts', currentAccounts.account[0]);
+    const loadCurrentAccount = async () => {
         setAvailablePublicKey(currentAccounts.account[0].publicKey);
+        const provider = new ethers.providers.JsonRpcProvider(`https://eth-rinkeby.alchemyapi.io/v2/CYvjZCkEfuUAvkhVxi879iYDaiWeUoyC`);
+        const balance = await provider.getBalance(currentAccounts.account[0].publicKey);
+        setAvailableEth(ethers.utils.formatEther(balance));
+        setAvailableEthUSD(setMarketValue(ethers.utils.formatEther(balance)))
+        dispatch(updateProvider(provider));
+
+        const etherScanProvider = new ethers.providers.EtherscanProvider("rinkeby", "N3VNFG3SI5ES3B3151M1J67753TXG1N38M");
+        console.log('etherScanProvider', etherScanProvider);
+        // etherScanProvider.getHistory(currentAccounts.account[0].publicKey)
+        const history = await etherScanProvider.getHistory(currentAccounts.account[0].publicKey);
+        console.log('history', history);
+    }
+
+    const setMarketValue = (eth) => {
+        const floatValue = parseFloat(eth);
+        const marketValue = ethMarketValue * floatValue;
+        return marketValue;
     }
 
     const createAccount = async () => {

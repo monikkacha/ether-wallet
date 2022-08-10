@@ -72,6 +72,7 @@
   border-radius: 10px;
   position: relative;
   border: 2px solid var(--gallery);
+  /* overflow: auto; */
 }
 
 .card-padding-container {
@@ -383,4 +384,28 @@
 
 .history-extra-info-date {
   color: green; 
+}
+
+
+
+
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

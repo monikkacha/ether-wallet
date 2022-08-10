@@ -5,7 +5,10 @@ export const updateAccount = (data) => {
     };
 }
 
-export const getAccount = {
-    type: "getAccount",
-    payload: undefined,
+export const updateProvider = (data) => {
+    return {
+        type: "updateProvider",
+        payload: data,
+    };
 }
+
