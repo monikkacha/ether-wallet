@@ -15,8 +15,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { KEY_ACCOUNT } from '../utils/constant';
 import { ethers } from 'ethers';
 import { updateAccount, updateProvider, updateHistory } from './../redux/action';
-import { getDecoratedPublicKey } from '../utils/CommonFunction';
-import { PATH_TRANSACTION } from '../utils/PathConstant';
+import { getDecoratedPublicKey, removeExtraDecimal } from '../utils/CommonFunction';
+import { PATH_SEND_ETHER, PATH_TRANSACTION } from '../utils/PathConstant';
 
 
 const Home = () => {
@@ -45,7 +45,7 @@ const Home = () => {
     }
 
     const onSendBtnClick = () => {
-        console.log('send eth clicked');
+        navigate(PATH_SEND_ETHER, { replace: false });
     }
 
     const moreBtnHandle = () => {
@@ -77,7 +77,7 @@ const Home = () => {
 
         const provider = new ethers.providers.JsonRpcProvider(`https://eth-rinkeby.alchemyapi.io/v2/${process.env.REACT_APP_ALCHEMY_KEY}`);
         const balance = await provider.getBalance(currentAccounts.account[0].publicKey);
-        setAvailableEth(ethers.utils.formatEther(balance));
+        setAvailableEth(removeExtraDecimal(ethers.utils.formatEther(balance)));
         setAvailableEthUSD(setMarketValue(ethers.utils.formatEther(balance)))
 
         dispatch(updateProvider(provider));
@@ -108,7 +108,7 @@ const Home = () => {
     const setMarketValue = (eth) => {
         const floatValue = parseFloat(eth);
         const marketValue = ethMarketValue * floatValue;
-        return marketValue;
+        return marketValue.toFixed(2);
     }
 
     const createAccount = async () => {
@@ -133,7 +133,7 @@ const Home = () => {
                         <span className='account-info-text-account-number' onClick={() => copyHandler()}> <span >{getDecoratedPublicKey(availablePublicKey)}</span> <MdOutlineContentCopy className='copy-icon' /></span>
                     </div>
                 </div>
-                <FiMoreVertical />
+                {/* <FiMoreVertical /> */}
             </div>
             <div className='divider' />
             <div className='size-box-height-24' />

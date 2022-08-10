@@ -31,7 +31,7 @@ const TransactionHistoryCard = ({ transaction }) => {
         setCurrentPublicKey(state.account[0].publicKey);
 
         if (transaction.from == state.account[0].publicKey) {
-            isSend = true;
+            setIsSend(true);
         }
     }
 
@@ -53,7 +53,8 @@ const TransactionHistoryCard = ({ transaction }) => {
                                 {date}
                             </span>
                             <BsDot />
-                            From : {getDecoratedPublicKey(transactionFrom)}
+                            {isSend ? "To : " : "From : "}
+                            {isSend ? getDecoratedPublicKey(transactionTo) : getDecoratedPublicKey(transactionFrom)}
                         </span>
                         <span className='history-extra-info'>{transactionEth} ETH</span>
                     </div>

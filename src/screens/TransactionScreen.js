@@ -15,11 +15,12 @@ const TransactionScreen = () => {
     const [account, setAccount] = useState('');
 
     const copyHandler = () => {
+        navigator.clipboard.writeText(account);
         toast.success('Public key copied on your clipboard');
     }
 
     const assignData = () => {
-        setTransactionHistory(historyState)
+        setTransactionHistory(historyState.reverse())
         setAccount(accountState.account[0].publicKey)
     }
 
@@ -28,7 +29,7 @@ const TransactionScreen = () => {
     return (
         <>
             <Card isBtnVisible={false}>
-                <div className='account-info-container'>
+                <div className='account-info-container '>
                     <div className='account-info-container-sub'>
                         <img src={material} alt='text' className='account-circle-avatar' />
                         <div className='size-box-width-12' />
@@ -40,9 +41,11 @@ const TransactionScreen = () => {
                 </div>
                 <div className='divider' />
                 <div className='size-box-height-12' />
-                {
-                    transactionHistory.length > 0 ? transactionHistory.map((item, index) => (<TransactionHistoryCard transaction={item} key={index} />)) : "No Data"
-                }
+                <div className="history-card-container">
+                    {
+                        transactionHistory.length > 0 ? transactionHistory.map((item, index) => (<TransactionHistoryCard transaction={item} key={index} />)) : "No Data"
+                    }
+                </div>
             </Card>
         </>
     )
