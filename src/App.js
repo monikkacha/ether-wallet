@@ -1,4 +1,5 @@
 import './App.css';
+import './SizeBox.css';
 import { Routes, Route } from 'react-router-dom';
 import CreateAccount from './screens/CreateAccount';
 import Home from './screens/Home';
