@@ -12,3 +12,10 @@ export const updateProvider = (data) => {
     };
 }
 
+export const updateHistory = (data) => {
+    return {
+        type: "updateHistory",
+        payload: data,
+    };
+}
+
