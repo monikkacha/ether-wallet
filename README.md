@@ -1,17 +1,31 @@
-# Sample Hardhat Project
+# 🚀 Future Wallet
+Future wallet is nothing but a clone of the famous Ethereum wallet METAMASK . Trying to implement as much as functionailtes can be replicated on this project . 
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Functionalities
 
-Try running some of the following tasks:
+✅️ Transfer tokens
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
-[Themeforest ](http://crypto-admin-templates.multipurposethemes.com/sass/bs5/front-end/index2.html)
+✅️ Check recent activities
 
+✅️ Create new account on ethereum
+
+✅️ Buy tokens
+
+✅️ Swap eth tokens
 
 
+
+## 🕸 Developed design
+
+![github](https://github.com/monikkacha/ether-wallet/blob/master/ss/ss1.png?raw=true)
+
+![github](https://github.com/monikkacha/ether-wallet/blob/master/ss/ss2.png?raw=true)
+
+![github](https://github.com/monikkacha/ether-wallet/blob/master/ss/ss3.png?raw=true)
+
+![github](https://github.com/monikkacha/ether-wallet/blob/master/ss/ss4.png?raw=true)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
